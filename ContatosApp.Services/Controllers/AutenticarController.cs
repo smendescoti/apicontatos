@@ -31,8 +31,6 @@ namespace ApiContatos.Services.Controllers
                 //verificar se o usuário foi encontrado
                 if (usuario != null)
                 {
-                    var br = TimeZoneInfo.FindSystemTimeZoneById("Brazil/East");
-
                     //retornar resposta de sucesso com o token
                     return StatusCode(200, new
                     {
@@ -40,8 +38,8 @@ namespace ApiContatos.Services.Controllers
                         nome = usuario.Nome,
                         email = usuario.Email,
                         accessToken = _tokenCreator.GenerateToken(usuario.Email),
-                        createdAt = DateTime.UtcNow,
-                        expiration = DateTime.UtcNow.AddHours(24)
+                        createdAt = DateTime.Now,
+                        expiration = DateTime.Now.AddHours(24)
                     });
                 }
                 else
