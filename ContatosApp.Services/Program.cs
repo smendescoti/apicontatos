@@ -27,6 +27,9 @@ builder.Services.AddDbContext<SqlServerContext>
 builder.Services.AddTransient<IContatoRepository, ContatoRepository>();
 builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
+TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+DateTime currentTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
+
 JwtConfiguration.Register(builder);
 
 #endregion

@@ -40,8 +40,8 @@ namespace ApiContatos.Services.Controllers
                         nome = usuario.Nome,
                         email = usuario.Email,
                         accessToken = _tokenCreator.GenerateToken(usuario.Email),
-                        createdAt = string.Format("{0}", TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, br).ToString()),
-                        expiration = string.Format("{0}", TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow.AddHours(6), br).ToString())
+                        createdAt = DateTime.UtcNow,
+                        expiration = DateTime.UtcNow.AddHours(24)
                     });
                 }
                 else
